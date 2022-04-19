@@ -25,6 +25,12 @@ body {
 }
 
 a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:active {
+  color: var(--stock-down);
   text-decoration: none;
 }
 

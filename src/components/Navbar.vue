@@ -7,6 +7,10 @@
       <h1>Stock Market</h1>
     </div>
   </div>
+  <div class="links">
+    <router-link to="/">上市</router-link>
+    <router-link :to="{ name: 'OtcCard' }">上櫃</router-link>
+  </div>
 </template>
 
 <script>
