@@ -1,18 +1,20 @@
 /* custom font */
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=Noto+Sans+TC:wght@100;300;400;700;900&family=Nunito:wght@200;300;400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&family=Noto+Sans+TC:wght@100;300;400;700;900&family=Nunito:wght@200;300;400;600;700;800&family=Poppins:wght@500;700&display=swap');
 
 /* variables */
 :root {
   --primary: hsl(193, 38%, 86%);
-  --secondary: hsl(150, 100%, 66%);
   --dark-primary: hsl(218, 23%, 16%);
   --dark-secondary: hsl(217, 19%, 24%);
+  --stock-up: #D35E69;
+  --stock-down: hsl(150, 100%, 66%);
+  --border-radius: 10px;
 }
 
 /* base styles  */
 * {
   margin: 0;
-  padding: 8px 10px;
+  padding: 5px 5px;
   font-family: 'Manrope', sans-serif;
   color: var(--primary);
 }
@@ -23,4 +25,8 @@ body {
 
 a {
   text-decoration: none;
+}
+
+p {
+  padding: 0;
 }
