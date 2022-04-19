@@ -18,5 +18,6 @@ export default {};
   display: flex;
   align-items: center;
   width: 100%;
+  color: var(--primary);
 }
 </style>

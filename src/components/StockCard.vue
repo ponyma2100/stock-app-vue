@@ -9,24 +9,37 @@
           <p>{{ stock.symbol }}</p>
         </div>
       </div>
-      <div class="card-center">
+      <div
+        class="card-center"
+        v-if="stock.change >= 0"
+        :class="{ up: stock.change >= 0 }"
+      >
         <button class="stock-price">
-          {{ stock.previousClose }}
+          <span> {{ stock.price }}</span>
         </button>
         <div class="stock-vol">
-          <p><i class="fas fa-sort-up"></i>{{ stock.change }}</p>
-          <!-- <p><i class="fas fa-sort-down"></i>{{ stock.change }}</p> -->
-          <p>{{ stock.volK }}</p>
-        </div>
-      </div>
-      <div class="card-right">
-        <div class="stock-changePercent">
+          <span><i class="fas fa-sort-up"></i>{{ stock.change }}</span>
           <span>{{ stock.changePercent }}</span>
         </div>
-        <div class="stock-hl">
-          <span class="high">H: {{ stock.dayHigh }}</span>
-          <span class="low">L: {{ stock.dayLow }}</span>
+      </div>
+      <div
+        class="card-center"
+        v-if="stock.change < 0"
+        :class="{ down: stock.change < 0 }"
+      >
+        <button class="stock-price">
+          <span>{{ stock.price }}</span>
+        </button>
+        <div class="stock-vol">
+          <span><i class="fas fa-sort-down"></i>{{ stock.change }}</span>
+          <span>{{ stock.changePercent }}</span>
         </div>
+      </div>
+
+      <div class="card-right">
+        <span>V: {{ stock.volK }}</span>
+        <span class="high">H: {{ stock.dayHigh }}</span>
+        <span class="low">L: {{ stock.dayLow }}</span>
       </div>
     </div>
   </div>
@@ -37,9 +50,10 @@ import getStocks from "../composables/getStocks";
 
 export default {
   setup() {
-    const { stockList, getStockList } = getStocks();
+    const { stockList, getStockList, otcList, getOtcList } = getStocks();
 
     getStockList();
+    getOtcList();
 
     return { stockList };
   },
@@ -49,7 +63,6 @@ export default {
 <style scoped>
 .card {
   background: var(--dark-secondary);
-  /* background: #263544; */
   margin: 5px;
   min-width: 360px;
   display: flex;
@@ -74,9 +87,15 @@ export default {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  font-size: 18px;
 }
 .card-right {
   align-items: flex-end;
+  font-size: 14px;
+}
+.stock-name {
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .stock-price {
@@ -91,6 +110,7 @@ export default {
   border: 0;
   color: var(--stock-up);
   font-size: 16px;
+  cursor: pointer;
 }
 
 .stock-price:hover {
@@ -102,22 +122,30 @@ export default {
   flex-direction: column;
   align-items: flex-end;
 }
-.stock-vol p {
+
+.stock-vol span {
   display: flex;
 }
 
-.stock-hl {
-  display: flex;
-  flex-direction: column;
+.down .stock-vol span {
+  align-items: flex-end;
 }
-.high {
+
+.high,
+.up span {
   color: var(--stock-up);
 }
-.low {
+
+.low,
+.down span {
   color: var(--stock-down);
 }
 
 .stock-id {
   font-size: 12px;
+}
+
+.stock-id p {
+  color: var(--neutral-gray);
 }
 </style>

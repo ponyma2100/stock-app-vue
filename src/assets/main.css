@@ -6,6 +6,7 @@
   --primary: hsl(193, 38%, 86%);
   --dark-primary: hsl(218, 23%, 16%);
   --dark-secondary: hsl(217, 19%, 24%);
+  --neutral-gray: #989A9C;
   --stock-up: #D35E69;
   --stock-down: hsl(150, 100%, 66%);
   --border-radius: 10px;
@@ -16,11 +17,11 @@
   margin: 0;
   padding: 5px 5px;
   font-family: 'Manrope', sans-serif;
-  color: var(--primary);
 }
 
 body {
   background: var(--dark-primary);
+
 }
 
 a {
@@ -28,5 +29,10 @@ a {
 }
 
 p {
+  color: var(--primary);
   padding: 0;
+}
+
+span {
+  color: var(--primary);
 }
