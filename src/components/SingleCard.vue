@@ -59,6 +59,10 @@ export default {
   border-radius: var(--border-radius);
   height: 100px;
 }
+.card:hover {
+  filter: brightness(1.2);
+  z-index: 1;
+}
 
 .card-left,
 .card-center,

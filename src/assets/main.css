@@ -42,3 +42,14 @@ p {
 span {
   color: var(--primary);
 }
+
+button,
+.btn {
+  background: var(--primary);
+  border-radius: 20px;
+  border: 0;
+  padding: 8px 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
+}
