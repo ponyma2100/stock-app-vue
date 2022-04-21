@@ -24,4 +24,12 @@ export default {};
   width: 100%;
   color: var(--primary);
 }
+.links {
+  font-weight: bold;
+}
+
+.router-link-active {
+  color: hsl(150, 100%, 66%);
+  border-bottom: 1px solid hsl(150, 100%, 66%);
+}
 </style>

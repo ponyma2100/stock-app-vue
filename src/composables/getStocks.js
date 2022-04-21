@@ -38,7 +38,6 @@ const getStocks = () => {
       })
       const data = await response.json()
       otcList.value = await data.list
-      console.log(otcList.value)
 
     } catch (error) {
       console.log(error)
