@@ -13,7 +13,8 @@ const getStocks = () => {
 
   const getStockList = async () => {
     try {
-      const response = await fetch(`${BASE_URL}`, {
+      const response = await fetch(`${corsURL
+        }${BASE_URL}`, {
         method: 'get',
         headers: { 'Access-Control-Allow-Headers': '*', 'Access-Control-Allow-Origin': '*', 'content-type': 'application/json', 'Access-Control-Allow-Credentials': 'true', 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/111.25 (KHTML, like Gecko) Chrome/99.0.2345.81 Safari/123.36' }
       })
