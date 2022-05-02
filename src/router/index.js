@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import StockCard from '../views/StockCard.vue'
 import OtcCard from '../views/OtcCard.vue'
+import StockMain from '../views/StockMain'
 
 const routes = [
 
@@ -13,6 +14,11 @@ const routes = [
     path: '/otc',
     name: 'OtcCard',
     component: OtcCard
+  },
+  {
+    path: '/:id',
+    name: 'Main',
+    component: StockMain
   },
 ]
 

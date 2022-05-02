@@ -1,44 +1,49 @@
 <template>
-  <div class="card" v-for="stock in stockList" :key="stock.rowId">
-    <div class="card-left">
-      <div class="stock-name">
-        <p>{{ stock.symbolName }}</p>
-      </div>
-      <div class="stock-id">
-        <p>{{ stock.symbol }}</p>
-      </div>
-    </div>
-    <div
-      class="card-center"
-      v-if="stock.change >= 0"
-      :class="{ up: stock.change >= 0 }"
+  <div v-for="stock in stockList" :key="stock.rowId">
+    <router-link
+      class="card"
+      :to="{ name: 'Main', params: { id: stock.rowId } }"
     >
-      <button class="stock-price">
-        <span> {{ stock.price }}</span>
-      </button>
-      <div class="stock-vol">
-        <span><i class="fas fa-sort-up"></i>{{ stock.change }}</span>
-        <span>{{ stock.changePercent }}</span>
+      <div class="card-left">
+        <div class="stock-name">
+          <p>{{ stock.symbolName }}</p>
+        </div>
+        <div class="stock-id">
+          <p>{{ stock.symbol }}</p>
+        </div>
       </div>
-    </div>
-    <div
-      class="card-center"
-      v-if="stock.change < 0"
-      :class="{ down: stock.change < 0 }"
-    >
-      <button class="stock-price">
-        <span>{{ stock.price }}</span>
-      </button>
-      <div class="stock-vol">
-        <span><i class="fas fa-sort-down"></i>{{ stock.change }}</span>
-        <span>{{ stock.changePercent }}</span>
+      <div
+        class="card-center"
+        v-if="stock.change >= 0"
+        :class="{ up: stock.change >= 0 }"
+      >
+        <button class="stock-price">
+          <span> {{ stock.price }}</span>
+        </button>
+        <div class="stock-vol">
+          <span><i class="fas fa-sort-up"></i>{{ stock.change }}</span>
+          <span>{{ stock.changePercent }}</span>
+        </div>
       </div>
-    </div>
-    <div class="card-right">
-      <span>V: {{ stock.volK }}</span>
-      <span class="high">H: {{ stock.dayHigh }}</span>
-      <span class="low">L: {{ stock.dayLow }}</span>
-    </div>
+      <div
+        class="card-center"
+        v-if="stock.change < 0"
+        :class="{ down: stock.change < 0 }"
+      >
+        <button class="stock-price">
+          <span>{{ stock.price }}</span>
+        </button>
+        <div class="stock-vol">
+          <span><i class="fas fa-sort-down"></i>{{ stock.change }}</span>
+          <span>{{ stock.changePercent }}</span>
+        </div>
+      </div>
+      <div class="card-right">
+        <span>V: {{ stock.volK }}</span>
+        <span class="high">H: {{ stock.dayHigh }}</span>
+        <span class="low">L: {{ stock.dayLow }}</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -52,7 +57,7 @@ export default {
 <style scoped>
 .card {
   background: var(--dark-secondary);
-  margin: 5px;
+  /* margin: 5px; */
   min-width: 360px;
   display: flex;
   justify-content: space-evenly;

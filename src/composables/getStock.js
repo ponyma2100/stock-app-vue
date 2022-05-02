@@ -12,8 +12,6 @@ const getStock = () => {
       const data = await response.json()
 
       stockInfo.value = await data
-      console.log("🚀 ~ file: getStock.js ~ line 16 ~ getStockInfo ~ stockInfo.value", stockInfo.value)
-
     } catch (error) {
       console.log(error)
     }

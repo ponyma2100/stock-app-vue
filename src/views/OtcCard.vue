@@ -1,16 +1,18 @@
 <template>
+  <Navbar />
   <div class="cards">
     <SingleCard :stockList="otcList" />
   </div>
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
+import SingleCard from "../components/SingleCard.vue";
 import getStocks from "../composables/getStocks";
 import getStock from "../composables/getStock";
-import SingleCard from "../components/SingleCard.vue";
 
 export default {
-  components: { SingleCard },
+  components: { SingleCard, Navbar },
   setup() {
     const { otcList, getOtcList } = getStocks();
     const { getOtcInfo, otcInfo } = getStock();
