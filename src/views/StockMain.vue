@@ -1,15 +1,17 @@
 <template>
+  <Navbar />
   <StockDetail :stock="stockInfo" v-if="stockInfo.symbol" />
   <StockDetail :stock="otcInfo" v-if="otcInfo.symbol" />
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
 import StockDetail from "../components/StockDetail.vue";
 import getStock from "../composables/getStock";
 import { useRoute } from "vue-router";
 
 export default {
-  components: { StockDetail },
+  components: { StockDetail, Navbar },
   setup(props) {
     const route = useRoute();
     const { getStockInfo, getOtcInfo, stockInfo, otcInfo } = getStock();

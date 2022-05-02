@@ -5,7 +5,7 @@
     </div>
 
     <div class="title">
-      <h2>Stock Market</h2>
+      <router-link to="/"><h2>Stock Market</h2></router-link>
     </div>
     <div class="menu" v-show="isMenu">
       <ul>
@@ -19,10 +19,6 @@
         <button class="signup">Sign Up</button>
       </div>
     </div>
-  </div>
-  <div class="links">
-    <router-link to="/">上市</router-link>
-    <router-link :to="{ name: 'OtcCard' }">上櫃</router-link>
   </div>
 </template>
 
@@ -46,6 +42,7 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
+  height: 80px;
   color: var(--primary);
   position: fixed;
   background: #1f2632;
@@ -58,19 +55,6 @@ export default {
 }
 .title {
   z-index: 999;
-}
-.links {
-  font-weight: bold;
-  margin-top: 5rem;
-}
-
-.links a:hover {
-  filter: brightness(1.2);
-}
-
-.router-link-active {
-  color: hsl(150, 100%, 66%);
-  border-bottom: 1px solid hsl(150, 100%, 66%);
 }
 
 .menu {
