@@ -2,6 +2,7 @@
   <div v-for="stock in stockList" :key="stock.rowId">
     <router-link
       class="card"
+      :stockList="stockList"
       :to="{ name: 'Main', params: { id: stock.rowId } }"
     >
       <div class="card-left">

@@ -18,7 +18,8 @@ const routes = [
   {
     path: '/:id',
     name: 'Main',
-    component: StockMain
+    component: StockMain,
+    props: true
   },
 ]
 
