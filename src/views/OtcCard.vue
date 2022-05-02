@@ -15,9 +15,7 @@ export default {
   components: { SingleCard, Navbar },
   setup() {
     const { otcList, getOtcList } = getStocks();
-    const { getOtcInfo, otcInfo } = getStock();
     getOtcList();
-    getOtcInfo();
 
     return { otcList };
   },

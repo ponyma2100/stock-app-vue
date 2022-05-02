@@ -8,8 +8,8 @@ const getStock = () => {
   const getStockInfo = async (symbol) => {
 
     try {
-      const response = await fetch(`https://quiet-brushlands-71126.herokuapp.com/api/stockinfo/${symbol}`)
-      // const response = await fetch(`http://localhost:3000/api/stockinfo/${symbol}`)
+      // const response = await fetch(`https://quiet-brushlands-71126.herokuapp.com/api/stockinfo/${symbol}`)
+      const response = await fetch(`http://localhost:3000/api/stockinfo/${symbol}`)
       const data = await response.json()
 
       stockInfo.value = await data
@@ -23,14 +23,12 @@ const getStock = () => {
 
   const getOtcInfo = async (symbol) => {
 
-    console.log("🚀 ~ file: getStock.js ~ line 29 ~ getOtcInfo ~ symbol", symbol)
     try {
-      const response = await fetch(`https://quiet-brushlands-71126.herokuapp.com/api/otcinfo/${symbol}`)
-      // const response = await fetch(`http://localhost:3000/api/otcinfo/${symbol}`)
+      // const response = await fetch(`https://quiet-brushlands-71126.herokuapp.com/api/otcinfo/${symbol}`)
+      const response = await fetch(`http://localhost:3000/api/otcinfo/${symbol}`)
       const data = await response.json()
 
       otcInfo.value = await data
-
 
     } catch (error) {
       console.log(error)
