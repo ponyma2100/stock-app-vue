@@ -53,3 +53,8 @@ button,
   cursor: pointer;
   display: inline-block;
 }
+
+li {
+  text-decoration: none;
+  list-style-type: none;
+}

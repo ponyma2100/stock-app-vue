@@ -14,14 +14,114 @@
       <h2><i class="fas fa-sort-up"></i>{{ stock.change }}</h2>
       <h2>{{ stock.changePercent }}</h2>
     </div>
+    <div class="market">
+      <div class="title">
+        <h2>市況</h2>
+      </div>
+      <div class="market-info">
+        <div class="rows">
+          <span>成交</span>
+          <span>{{ stock.price }}</span>
+        </div>
+        <div class="rows">
+          <span>開盤</span>
+          <span>{{ stock.regularMarketOpen }}</span>
+        </div>
+        <div class="rows">
+          <span>漲跌</span>
+          <span>{{ stock.change }}</span>
+        </div>
+        <div class="rows">
+          <span>漲跌幅</span>
+          <span>{{ stock.changePercent }}</span>
+        </div>
+        <div class="rows">
+          <span>最高</span>
+          <span>{{ stock.regularMarketDayHigh }}</span>
+        </div>
+        <div class="rows">
+          <span>最低</span>
+          <span>{{ stock.regularMarketDayLow }}</span>
+        </div>
+        <div class="rows">
+          <span>昨收</span>
+          <span>{{ stock.regularMarketPreviousClose }}</span>
+        </div>
+        <div class="rows">
+          <span>總量</span>
+          <span>{{ stock.volumeK }}</span>
+        </div>
+        <div class="rows">
+          <span>昨量</span>
+          <span>{{ stock.previousVolumeK }}</span>
+        </div>
+        <div class="rows">
+          <span>成交值(億)</span>
+          <span>{{ stock.turnoverM }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="chart">
+      <LineChart :chartData="testData" />
+    </div>
   </div>
 </template>
 
 <script>
+import { LineChart } from "vue-chart-3";
+import { Chart, registerables } from "chart.js";
+import { ref } from "@vue/reactivity";
+
+Chart.register(...registerables);
+
 export default {
   props: ["stock"],
 
-  setup(props) {},
+  components: { LineChart },
+  setup() {
+    const stockData = ref([
+      {
+        t: 202205040901,
+        p: 533,
+        v: 1805,
+      },
+      {
+        t: 202205040902,
+        p: 536,
+        v: 456,
+      },
+      {
+        t: 202205040903,
+        p: 537,
+        v: 269,
+      },
+      {
+        t: 202205040904,
+        p: 536,
+        v: 133,
+      },
+      {
+        t: 202205040905,
+        p: 536,
+        v: 72,
+      },
+    ]);
+
+    const dates = stockData.value.map((stock) => stock.t);
+    const prices = stockData.value.map((stock) => stock.p);
+
+    const testData = {
+      labels: dates,
+      datasets: [
+        {
+          data: prices,
+          backgroundColor: ["#0079AF"],
+        },
+      ],
+    };
+
+    return { testData };
+  },
 };
 </script>
 
@@ -34,6 +134,7 @@ export default {
   background: #1e222d;
   display: flex;
   flex-direction: column;
+  min-width: 360px;
 }
 
 .name {
@@ -47,5 +148,21 @@ export default {
   display: flex;
   align-items: center;
   margin: 2px 20px;
+}
+
+.market,
+.market-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.market-info {
+  padding: 20px 20px;
+  margin: 0 10px;
+}
+
+.rows {
+  display: flex;
+  justify-content: space-between;
 }
 </style>
