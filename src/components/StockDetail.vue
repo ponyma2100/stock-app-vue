@@ -88,7 +88,11 @@ export default {
       datasets: [
         {
           data: prices,
-          backgroundColor: ["#ffffff"],
+          backgroundColor: ["rgb(75, 192, 192)"],
+          pointBackgroundColor: "#d1d4dc",
+          pointBorderWidth: 0.1,
+          fill: true,
+          tension: 0.5,
         },
       ],
     };

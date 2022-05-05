@@ -6,7 +6,8 @@ const getQuote = () => {
 
   const getStockTick = async (symbol) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/quote/${symbol}`)
+      // const response = await fetch(`http://localhost:3000/api/quote/${symbol}`)
+      const response = await fetch(`https://quiet-brushlands-71126.herokuapp.com/api/quote/${symbol}`)
       const data = await response.json()
       stockTick.value = data
 
@@ -17,8 +18,6 @@ const getQuote = () => {
   }
 
   return { getStockTick, stockTick }
-
-
 }
 
 

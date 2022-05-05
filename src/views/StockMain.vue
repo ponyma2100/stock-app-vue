@@ -44,4 +44,7 @@ export default {
 </script>
 
 <style >
+#LineChart {
+  max-width: 800px;
+}
 </style>
