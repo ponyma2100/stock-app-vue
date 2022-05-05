@@ -1,7 +1,11 @@
 <template>
   <Navbar />
-  <StockDetail :stock="stockInfo" v-if="stockInfo.symbol" />
-  <StockDetail :stock="otcInfo" v-if="otcInfo.symbol" />
+  <StockDetail
+    :stock="stockInfo"
+    :stockTick="stockTick"
+    v-if="stockInfo.symbol"
+  />
+  <StockDetail :stock="otcInfo" :stockTick="stockTick" v-if="otcInfo.symbol" />
 </template>
 
 <script>
@@ -10,6 +14,7 @@ import StockDetail from "../components/StockDetail.vue";
 import getStock from "../composables/getStock";
 import getQuote from "../composables/getQuote";
 import { useRoute } from "vue-router";
+import { ref } from "@vue/reactivity";
 
 export default {
   components: { StockDetail, Navbar },
@@ -17,16 +22,18 @@ export default {
     const route = useRoute();
     const { getStockInfo, getOtcInfo, stockInfo, otcInfo } = getStock();
     const { getStockTick, stockTick } = getQuote();
-    console.log(
-      "🚀 ~ file: StockMain.vue ~ line 22 ~ setup ~ route.params",
-      route
-    );
+
+    let id = ref("");
+    id = route.params.id.split(".")[0];
+
     if (route.params.id.includes("TWO")) {
       getOtcInfo(route.params.id);
     } else {
       getStockInfo(route.params.id);
     }
-    getStockTick();
+
+    getStockTick(id);
+
     return {
       stockInfo,
       otcInfo,

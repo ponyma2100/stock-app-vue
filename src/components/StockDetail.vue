@@ -62,7 +62,7 @@
       </div>
     </div>
     <div class="chart">
-      <LineChart :chartData="testData" />
+      <LineChart :chartData="stockData" />
     </div>
   </div>
 </template>
@@ -75,52 +75,25 @@ import { ref } from "@vue/reactivity";
 Chart.register(...registerables);
 
 export default {
-  props: ["stock"],
+  props: ["stock", "stockTick"],
 
   components: { LineChart },
-  setup() {
-    const stockData = ref([
-      {
-        t: 202205040901,
-        p: 533,
-        v: 1805,
-      },
-      {
-        t: 202205040902,
-        p: 536,
-        v: 456,
-      },
-      {
-        t: 202205040903,
-        p: 537,
-        v: 269,
-      },
-      {
-        t: 202205040904,
-        p: 536,
-        v: 133,
-      },
-      {
-        t: 202205040905,
-        p: 536,
-        v: 72,
-      },
-    ]);
 
-    const dates = stockData.value.map((stock) => stock.t);
-    const prices = stockData.value.map((stock) => stock.p);
+  setup(props) {
+    const dates = props.stockTick.map((stock) => stock.t);
+    const prices = props.stockTick.map((stock) => stock.p);
 
-    const testData = {
+    const stockData = {
       labels: dates,
       datasets: [
         {
           data: prices,
-          backgroundColor: ["#0079AF"],
+          backgroundColor: ["#ffffff"],
         },
       ],
     };
 
-    return { testData };
+    return { stockData };
   },
 };
 </script>
