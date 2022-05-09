@@ -61,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="chart">
+    <div class="chart" v-if="stockData">
       <LineChart :chartData="stockData" />
     </div>
   </div>
@@ -70,35 +70,15 @@
 <script>
 import { LineChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
-import { ref } from "@vue/reactivity";
 
 Chart.register(...registerables);
 
 export default {
-  props: ["stock", "stockTick"],
+  props: ["stock", "stockData"],
 
   components: { LineChart },
 
-  setup(props) {
-    const dates = props.stockTick.map((stock) => stock.t);
-    const prices = props.stockTick.map((stock) => stock.p);
-
-    const stockData = {
-      labels: dates,
-      datasets: [
-        {
-          data: prices,
-          backgroundColor: ["rgb(75, 192, 192)"],
-          pointBackgroundColor: "#d1d4dc",
-          pointBorderWidth: 0.1,
-          fill: true,
-          tension: 0.5,
-        },
-      ],
-    };
-
-    return { stockData };
-  },
+  setup(props) {},
 };
 </script>
 

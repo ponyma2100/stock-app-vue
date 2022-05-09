@@ -2,10 +2,10 @@
   <Navbar />
   <StockDetail
     :stock="stockInfo"
-    :stockTick="stockTick"
+    :stockData="stockData"
     v-if="stockInfo.symbol"
   />
-  <StockDetail :stock="otcInfo" :stockTick="stockTick" v-if="otcInfo.symbol" />
+  <StockDetail :stock="otcInfo" :stockData="stockData" v-if="otcInfo.symbol" />
 </template>
 
 <script>
@@ -15,6 +15,7 @@ import getStock from "../composables/getStock";
 import getQuote from "../composables/getQuote";
 import { useRoute } from "vue-router";
 import { ref } from "@vue/reactivity";
+import { computed } from "@vue/runtime-core";
 
 export default {
   components: { StockDetail, Navbar },
@@ -34,10 +35,35 @@ export default {
 
     getStockTick(id);
 
+    const dates = computed(() => {
+      return stockTick.value.map((stock) => stock.t);
+    });
+
+    const prices = computed(() => {
+      return stockTick.value.map((stock) => stock.p);
+    });
+
+    const stockData = computed(() => ({
+      labels: dates.value,
+      datasets: [
+        {
+          data: prices.value,
+          backgroundColor: ["rgb(75, 192, 192)"],
+          pointBackgroundColor: "#d1d4dc",
+          pointBorderWidth: 0.1,
+          fill: true,
+          tension: 0.5,
+        },
+      ],
+    }));
+
     return {
       stockInfo,
       otcInfo,
       stockTick,
+      dates,
+      prices,
+      stockData,
     };
   },
 };
