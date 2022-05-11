@@ -43,11 +43,17 @@ export default {
       return stockTick.value.map((stock) => stock.p);
     });
 
+    const showDate = computed(() => {
+      return stockInfo.value.regularMarketTime
+        ? stockInfo.value.regularMarketTime.split("T")[0]
+        : otcInfo.value.regularMarketTime.split("T")[0];
+    });
+
     const stockData = computed(() => ({
       labels: dates.value,
       datasets: [
         {
-          label: "Price",
+          label: showDate.value,
           data: prices.value,
           backgroundColor: ["rgb(75, 192, 192)"],
           pointBackgroundColor: ["rgba(0,0,0,0)"],
@@ -66,6 +72,7 @@ export default {
       dates,
       prices,
       stockData,
+      showDate,
     };
   },
 };
