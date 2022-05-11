@@ -61,8 +61,8 @@
         </div>
       </div>
     </div>
-    <div class="chart" v-if="stockData">
-      <LineChart :chartData="stockData" />
+    <div class="chart-container" v-if="stockData">
+      <LineChart :chartData="stockData" style="max-height: 500px" />
     </div>
   </div>
 </template>

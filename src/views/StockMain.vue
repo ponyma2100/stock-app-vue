@@ -47,10 +47,12 @@ export default {
       labels: dates.value,
       datasets: [
         {
+          label: "Price",
           data: prices.value,
           backgroundColor: ["rgb(75, 192, 192)"],
-          pointBackgroundColor: "#d1d4dc",
+          pointBackgroundColor: ["rgba(0,0,0,0)"],
           pointBorderWidth: 0.1,
+          maintainAspectRatio: false,
           fill: true,
           tension: 0.5,
         },
@@ -68,9 +70,3 @@ export default {
   },
 };
 </script>
-
-<style >
-#LineChart {
-  max-width: 800px;
-}
-</style>
