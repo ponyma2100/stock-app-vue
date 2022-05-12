@@ -36,7 +36,10 @@ export default {
     getStockTick(id);
 
     const dates = computed(() => {
-      return stockTick.value.map((stock) => stock.t);
+      const arr = stockTick.value.map((stock) => {
+        return stock.t.toString();
+      });
+      return arr.map((stock) => stock.slice(8, arr.length));
     });
 
     const prices = computed(() => {
