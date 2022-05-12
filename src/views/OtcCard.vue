@@ -5,6 +5,7 @@
       <router-link to="/">上市</router-link>
       <router-link :to="{ name: 'OtcCard' }">上櫃</router-link>
     </div>
+    <Spinner v-show="otcList.length <= 0" />
     <SingleCard :stockList="otcList" />
   </div>
 </template>
@@ -13,10 +14,10 @@
 import Navbar from "../components/Navbar.vue";
 import SingleCard from "../components/SingleCard.vue";
 import getStocks from "../composables/getStocks";
-import getStock from "../composables/getStock";
+import Spinner from "../components/Spinner.vue";
 
 export default {
-  components: { SingleCard, Navbar },
+  components: { SingleCard, Navbar, Spinner },
   setup() {
     const { otcList, getOtcList } = getStocks();
     getOtcList();
