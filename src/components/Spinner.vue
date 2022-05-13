@@ -8,12 +8,12 @@ export default {};
 
 <style>
 .spinner {
-  width: 60px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   position: relative;
-  left: 45%;
-  top: 200px;
+  left: 40%;
+  top: 100px;
 }
 
 .spinner::before,
@@ -29,14 +29,15 @@ export default {};
   background-image: linear-gradient(0deg, #ff00cc 0%, #333399 100%);
   top: 0;
   left: 0;
-  animation: spin 0.5s infinite linear;
+  animation: spin 0.6s infinite linear;
 }
 .spinner::after {
-  width: 80%;
-  height: 80%;
+  width: 85%;
+  height: 85%;
   background-color: var(--dark-primary);
-  top: 10%;
-  left: 10%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @keyframes spin {

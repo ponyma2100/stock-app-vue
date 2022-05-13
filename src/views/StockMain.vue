@@ -1,5 +1,6 @@
 <template>
   <Navbar />
+  <Spinner v-if="!stockInfo.price && !otcInfo.price" />
   <StockDetail
     :stock="stockInfo"
     :stockData="stockData"
@@ -11,6 +12,7 @@
 <script>
 import Navbar from "../components/Navbar.vue";
 import StockDetail from "../components/StockDetail.vue";
+import Spinner from "../components/Spinner.vue";
 import getStock from "../composables/getStock";
 import getQuote from "../composables/getQuote";
 import { useRoute } from "vue-router";
@@ -18,7 +20,7 @@ import { ref } from "@vue/reactivity";
 import { computed } from "@vue/runtime-core";
 
 export default {
-  components: { StockDetail, Navbar },
+  components: { StockDetail, Navbar, Spinner },
   setup(props) {
     const route = useRoute();
     const { getStockInfo, getOtcInfo, stockInfo, otcInfo } = getStock();
@@ -80,3 +82,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.spinner {
+  top: 250px;
+}
+</style>
