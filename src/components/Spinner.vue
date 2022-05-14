@@ -8,12 +8,13 @@ export default {};
 
 <style>
 .spinner {
+  z-index: 99;
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  position: relative;
-  left: 50%;
-  top: 100px;
+  position: absolute;
+  left: 45%;
+  top: 25%;
 }
 
 .spinner::before,

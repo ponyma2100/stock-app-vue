@@ -85,6 +85,7 @@ export default {
 
 <style scoped>
 .spinner {
-  top: 250px;
+  position: absolute;
+  top: 25%;
 }
 </style>

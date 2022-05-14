@@ -58,8 +58,7 @@ export default {
 <style scoped>
 .card {
   background: var(--dark-secondary);
-  /* margin: 5px; */
-  min-width: 360px;
+  min-width: 325px;
   display: flex;
   justify-content: space-evenly;
   border-radius: var(--border-radius);

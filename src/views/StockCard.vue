@@ -4,8 +4,8 @@
     <router-link to="/">上市</router-link>
     <router-link :to="{ name: 'OtcCard' }">上櫃</router-link>
   </div>
+  <Spinner v-show="stockList.length <= 0" />
   <div class="cards">
-    <Spinner v-show="stockList.length <= 0" />
     <SingleCard :stockList="stockList" />
   </div>
 </template>
@@ -30,7 +30,8 @@ export default {
 
 <style scoped>
 .cards {
-  margin-top: 7.5rem;
+  margin-top: 6.5rem;
+  position: relative;
 }
 .links {
   font-weight: bold;
@@ -39,13 +40,11 @@ export default {
   color: var(--primary);
   position: fixed;
   display: flex;
+  justify-content: center;
   top: 9%;
   z-index: 99;
 }
-.links a {
-  position: relative;
-  left: 50%;
-}
+
 .links a:hover {
   filter: brightness(1.2);
 }
