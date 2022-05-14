@@ -29,10 +29,22 @@ export default {
 
 <style scoped>
 .cards {
-  margin-top: 4.5rem;
+  margin-top: 7.5rem;
 }
 .links {
   font-weight: bold;
+  background: var(--dark-primary);
+  width: 98%;
+  color: var(--primary);
+  position: fixed;
+  display: flex;
+  top: 9%;
+  z-index: 99;
+}
+
+.links a {
+  position: relative;
+  left: 50%;
 }
 
 .links a:hover {

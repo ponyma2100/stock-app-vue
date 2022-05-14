@@ -12,7 +12,7 @@ export default {};
   height: 80px;
   border-radius: 50%;
   position: relative;
-  left: 40%;
+  left: 50%;
   top: 100px;
 }
 

@@ -1,10 +1,10 @@
 <template>
   <Navbar />
+  <div class="links">
+    <router-link to="/">上市</router-link>
+    <router-link :to="{ name: 'OtcCard' }">上櫃</router-link>
+  </div>
   <div class="cards">
-    <div class="links">
-      <router-link to="/">上市</router-link>
-      <router-link :to="{ name: 'OtcCard' }">上櫃</router-link>
-    </div>
     <Spinner v-show="stockList.length <= 0" />
     <SingleCard :stockList="stockList" />
   </div>
@@ -30,12 +30,22 @@ export default {
 
 <style scoped>
 .cards {
-  margin-top: 4.5rem;
+  margin-top: 7.5rem;
 }
 .links {
   font-weight: bold;
+  background: var(--dark-primary);
+  width: 98%;
+  color: var(--primary);
+  position: fixed;
+  display: flex;
+  top: 9%;
+  z-index: 99;
 }
-
+.links a {
+  position: relative;
+  left: 50%;
+}
 .links a:hover {
   filter: brightness(1.2);
 }
