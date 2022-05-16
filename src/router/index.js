@@ -19,7 +19,7 @@ const routes = [
     path: '/:id',
     name: 'Main',
     component: StockMain,
-    props: true
+    props: true,
   },
 ]
 

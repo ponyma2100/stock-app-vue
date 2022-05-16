@@ -6,6 +6,7 @@ const getStocks = () => {
 
   let stockList = ref([])
   let otcList = ref([])
+  let symbolList = ref([])
 
   // get stocks
   const getStockList = async () => {
@@ -35,7 +36,20 @@ const getStocks = () => {
 
   }
 
-  return { getStockList, getOtcList, stockList, otcList }
+  //  get all stocks list
+  const getSymbolList = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/symbollist')
+
+      symbolList.value = await response.json()
+    } catch (error) {
+      console.log(error)
+    }
+
+    return symbolList
+  }
+
+  return { getStockList, getOtcList, getSymbolList, stockList, otcList, symbolList }
 }
 
 

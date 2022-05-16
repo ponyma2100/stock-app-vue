@@ -42,7 +42,7 @@ export default {
   display: flex;
   justify-content: center;
   top: 9%;
-  z-index: 99;
+  z-index: 10;
 }
 
 .links a:hover {

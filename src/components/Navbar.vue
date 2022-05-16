@@ -7,6 +7,22 @@
     <div class="title">
       <router-link to="/"><h2>Stock Market</h2></router-link>
     </div>
+
+    <div class="search">
+      <input type="text" v-model="search" />
+      <button @click.stop.prevent="handleSearch">Search</button>
+      <ul class="search-container" v-show="matchSymbol.length > 0">
+        <li class="search-result" v-for="stock in matchSymbol" :key="stock.id">
+          <router-link
+            :to="{ name: 'Main', params: { id: stock.symbol } }"
+            :key="this.$route.params.id"
+            ><span>{{ stock.id }}</span>
+            <span>{{ stock.name }}</span>
+          </router-link>
+        </li>
+      </ul>
+    </div>
+
     <div class="menu" v-show="isMenu">
       <ul>
         <li><a href="#">Features</a></li>
@@ -24,15 +40,42 @@
 
 <script>
 import { ref } from "@vue/reactivity";
+import getStocks from "../composables/getStocks";
+import { onMounted } from "@vue/runtime-core";
+
 export default {
   setup() {
+    const { getSymbolList, symbolList } = getStocks();
     let isMenu = ref(false);
+    let search = ref("");
+    let matchSymbol = ref([]);
+
+    onMounted(async () => {
+      await getSymbolList();
+    });
 
     const showMenu = () => {
       isMenu.value = !isMenu.value;
     };
 
-    return { showMenu, isMenu };
+    const handleSearch = () => {
+      if (search.value.length >= 2) {
+        matchSymbol.value = symbolList.value.filter((list) => {
+          if (
+            list.id.includes(search.value) ||
+            list.name.includes(search.value)
+          ) {
+            return list;
+          }
+        });
+
+        return matchSymbol;
+      } else {
+        console.log("請輸入股票代碼或名稱");
+      }
+    };
+
+    return { showMenu, isMenu, symbolList, search, handleSearch, matchSymbol };
   },
 };
 </script>
@@ -58,7 +101,7 @@ export default {
 }
 
 .menu {
-  height: 99vh;
+  height: 100%;
   width: 40%;
   max-width: 360px;
   min-width: 260px;
@@ -100,9 +143,24 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  margin-bottom: 10%;
 }
 
 .menu .signup {
   width: 80%;
+}
+
+.search {
+  position: relative;
+}
+
+.search-container {
+  background: #1f2632;
+  width: 60vw;
+  height: 400px;
+  position: absolute;
+  overflow-y: scroll;
+  text-align: start;
+  z-index: 999;
 }
 </style>
