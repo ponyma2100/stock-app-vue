@@ -39,7 +39,8 @@ const getStocks = () => {
   //  get all stocks list
   const getSymbolList = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/symbollist')
+      // const response = await fetch('http://localhost:3000/api/symbollist')
+      const response = await fetch('https://quiet-brushlands-71126.herokuapp.com/api/symbollist')
 
       symbolList.value = await response.json()
     } catch (error) {

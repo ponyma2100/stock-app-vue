@@ -65,7 +65,7 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 75px;
+  height: 70px;
   color: var(--primary);
   position: fixed;
   background: #1f2632;

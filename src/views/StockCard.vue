@@ -41,8 +41,9 @@ export default {
   position: fixed;
   display: flex;
   justify-content: center;
-  top: 10%;
+  top: 8%;
   z-index: 10;
+  padding-top: 20px;
 }
 
 .links a:hover {
