@@ -9,18 +9,10 @@
     </div>
 
     <div class="search">
-      <input type="text" v-model="search" />
-      <button @click.stop.prevent="handleSearch">Search</button>
-      <ul class="search-container" v-show="matchSymbol.length > 0">
-        <li class="search-result" v-for="stock in matchSymbol" :key="stock.id">
-          <router-link
-            :to="{ name: 'Main', params: { id: stock.symbol } }"
-            :key="this.$route.params.id"
-            ><span>{{ stock.id }}</span>
-            <span>{{ stock.name }}</span>
-          </router-link>
-        </li>
-      </ul>
+      <Search :symbolList="symbolList" v-show="isShowSearch" />
+      <div class="search-icon" @click="handleShowSearch">
+        <i class="fas fa-search"></i>
+      </div>
     </div>
 
     <div class="menu" v-show="isMenu">
@@ -41,41 +33,29 @@
 <script>
 import { ref } from "@vue/reactivity";
 import getStocks from "../composables/getStocks";
+import Search from "../components/Search.vue";
 import { onMounted } from "@vue/runtime-core";
 
 export default {
+  components: { Search },
   setup() {
     const { getSymbolList, symbolList } = getStocks();
     let isMenu = ref(false);
-    let search = ref("");
-    let matchSymbol = ref([]);
+    let isShowSearch = ref(false);
 
     onMounted(async () => {
       await getSymbolList();
     });
 
+    const handleShowSearch = () => {
+      isShowSearch.value = !isShowSearch.value;
+    };
+
     const showMenu = () => {
       isMenu.value = !isMenu.value;
     };
 
-    const handleSearch = () => {
-      if (search.value.length >= 2) {
-        matchSymbol.value = symbolList.value.filter((list) => {
-          if (
-            list.id.includes(search.value) ||
-            list.name.includes(search.value)
-          ) {
-            return list;
-          }
-        });
-
-        return matchSymbol;
-      } else {
-        console.log("請輸入股票代碼或名稱");
-      }
-    };
-
-    return { showMenu, isMenu, symbolList, search, handleSearch, matchSymbol };
+    return { showMenu, isMenu, symbolList, handleShowSearch, isShowSearch };
   },
 };
 </script>
@@ -151,16 +131,15 @@ export default {
 }
 
 .search {
-  position: relative;
+  position: fixed;
+  right: 0;
+  display: flex;
+  margin-left: auto;
+  height: 30px;
+  margin-right: 30px;
 }
 
-.search-container {
-  background: #1f2632;
-  width: 60vw;
-  height: 400px;
-  position: absolute;
-  overflow-y: scroll;
-  text-align: start;
-  z-index: 999;
+.search-icon {
+  right: 0;
 }
 </style>
