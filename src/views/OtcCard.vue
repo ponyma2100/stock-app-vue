@@ -40,7 +40,7 @@ export default {
   position: fixed;
   display: flex;
   justify-content: center;
-  top: 9%;
+  top: 10%;
   z-index: 10;
 }
 

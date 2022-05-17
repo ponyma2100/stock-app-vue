@@ -42,18 +42,19 @@ export default {
 
 <style scoped>
 .search-box {
+  width: 100%;
   position: relative;
 }
 
 .search-box input {
-  width: 90%;
+  width: 65%;
 }
 
 .search-container {
   background: #1f2632;
-  width: 60vw;
-  height: 400px;
-  position: fixed;
+  width: 50vw;
+  height: 40vh;
+  /* position: fixed; */
   right: 0;
   overflow-y: scroll;
   text-align: start;

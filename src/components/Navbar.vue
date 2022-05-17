@@ -65,7 +65,7 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
-  height: 80px;
+  height: 75px;
   color: var(--primary);
   position: fixed;
   background: #1f2632;
@@ -131,12 +131,13 @@ export default {
 }
 
 .search {
+  background: #1f2632;
   position: fixed;
   right: 0;
   display: flex;
-  margin-left: auto;
   height: 30px;
   margin-right: 30px;
+  z-index: 999;
 }
 
 .search-icon {
