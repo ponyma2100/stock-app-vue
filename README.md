@@ -1,5 +1,7 @@
 # stock-app-vue
 
+https://ponyma2100.github.io/stock-app-vue/
+
 ## Project setup
 ```
 npm install
