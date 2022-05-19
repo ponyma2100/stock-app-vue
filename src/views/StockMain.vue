@@ -82,12 +82,12 @@ export default {
         tooltip: {
           callbacks: {
             title: function (context) {
-              let title = context[0].label || "";
+              let title = "Time:" + context[0].label || "";
               return title;
             },
 
             label: function (context) {
-              let label = context.parsed.y || "";
+              let label = "Price:" + context.parsed.y || "";
               return label;
             },
           },
