@@ -52,9 +52,10 @@ export default {
 
 .search-container {
   background: #1f2632;
-  width: 50vw;
+  width: 60vw;
   height: 40vh;
-  /* position: fixed; */
+  max-width: 450px;
+  font-size: 18px;
   right: 0;
   overflow-y: scroll;
   text-align: start;

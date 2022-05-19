@@ -32,20 +32,14 @@
 
 <script>
 import { ref } from "@vue/reactivity";
-import getStocks from "../composables/getStocks";
 import Search from "../components/Search.vue";
-import { onMounted } from "@vue/runtime-core";
+import symbolList from "../data/symbolList.json";
 
 export default {
   components: { Search },
   setup() {
-    const { getSymbolList, symbolList } = getStocks();
     let isMenu = ref(false);
     let isShowSearch = ref(false);
-
-    onMounted(async () => {
-      await getSymbolList();
-    });
 
     const handleShowSearch = () => {
       isShowSearch.value = !isShowSearch.value;
