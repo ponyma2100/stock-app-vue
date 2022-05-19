@@ -4,9 +4,15 @@
   <StockDetail
     :stock="stockInfo"
     :stockData="stockData"
+    :options="options"
     v-if="stockInfo.symbol"
   />
-  <StockDetail :stock="otcInfo" :stockData="stockData" v-if="otcInfo.symbol" />
+  <StockDetail
+    :stock="otcInfo"
+    :stockData="stockData"
+    v-if="otcInfo.symbol"
+    :options="options"
+  />
 </template>
 
 <script>
@@ -70,6 +76,25 @@ export default {
       ],
     }));
 
+    const options = computed(() => ({
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            title: function (context) {
+              let title = context[0].label || "";
+              return title;
+            },
+
+            label: function (context) {
+              let label = context.parsed.y || "";
+              return label;
+            },
+          },
+        },
+      },
+    }));
+
     return {
       stockInfo,
       otcInfo,
@@ -78,6 +103,7 @@ export default {
       prices,
       stockData,
       showDate,
+      options,
     };
   },
 };

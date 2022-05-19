@@ -97,7 +97,11 @@
         </div>
       </div>
       <div class="chart-container" v-if="stockData">
-        <LineChart :chartData="stockData" style="max-height: 500px" />
+        <LineChart
+          :chartData="stockData"
+          :options="options"
+          style="max-height: 500px"
+        />
       </div>
     </div>
   </div>
@@ -105,12 +109,12 @@
 
 <script>
 import { LineChart } from "vue-chart-3";
-import { Chart, registerables } from "chart.js";
+import { Chart, registerables, Title, Tooltip } from "chart.js";
 
-Chart.register(...registerables);
+Chart.register(...registerables, Tooltip);
 
 export default {
-  props: ["stock", "stockData"],
+  props: ["stock", "stockData", "options"],
 
   components: { LineChart },
 

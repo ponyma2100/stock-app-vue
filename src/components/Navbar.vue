@@ -66,10 +66,17 @@ export default {
   top: 0;
   z-index: 99;
 }
-.icon {
+.icon,
+.search-icon {
   cursor: pointer;
   z-index: 999;
 }
+
+.icon:hover,
+.search-icon:hover {
+  filter: brightness(80%);
+}
+
 .title {
   z-index: 999;
 }

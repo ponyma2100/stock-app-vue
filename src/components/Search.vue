@@ -61,4 +61,14 @@ export default {
   text-align: start;
   z-index: 999;
 }
+
+a {
+  display: inline-block;
+  width: 90%;
+  margin: 3px;
+}
+
+a:hover {
+  background: var(--dark-secondary);
+}
 </style>
