@@ -3,7 +3,7 @@
     <div class="name">
       <div class="name-up">
         <h1>{{ stock.symbolName }}</h1>
-        <h3>{{ stock.sectorName }}</h3>
+        <span>{{ stock.sectorName }}</span>
       </div>
       <div class="name-down">
         <h3>{{ stock.symbol }}</h3>
@@ -143,7 +143,7 @@ export default {
   width: 90%;
   height: 160px;
   position: fixed;
-  top: 6%;
+  top: 4%;
   background: #1e222d;
   left: 15px;
   margin: 30px 5px;
@@ -159,6 +159,13 @@ export default {
 .price {
   width: 300px;
   justify-content: space-between;
+}
+.name-up span {
+  background: #4bc0c0;
+  border-radius: 18px;
+  font-size: 14px;
+  font-weight: bold;
+  min-width: 36px;
 }
 
 .market,
