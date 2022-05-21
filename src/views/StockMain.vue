@@ -78,8 +78,11 @@ export default {
 
     const options = computed(() => ({
       responsive: true,
+      bodyFontColor: "#0ff",
       plugins: {
         tooltip: {
+          titleFont: { size: 16 },
+          bodyFont: { size: 16 },
           callbacks: {
             title: function (context) {
               let title = "Time:" + context[0].label || "";
