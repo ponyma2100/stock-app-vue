@@ -1,24 +1,22 @@
-import { ref } from "vue"
+import { ref } from "vue";
 
 const getQuote = () => {
-
-  let stockTick = ref([])
+  let stockTick = ref([]);
 
   const getStockTick = async (symbol) => {
     try {
       // const response = await fetch(`http://localhost:3000/api/quote/${symbol}`)
-      const response = await fetch(`https://quiet-brushlands-71126.herokuapp.com/api/quote/${symbol}`)
-      const data = await response.json()
-      stockTick.value = data
-
+      const response = await fetch(
+        `https://ponystock.onrender.com/api/quote/${symbol}`
+      );
+      const data = await response.json();
+      stockTick.value = data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
+  };
 
-  }
+  return { getStockTick, stockTick };
+};
 
-  return { getStockTick, stockTick }
-}
-
-
-export default getQuote
+export default getQuote;

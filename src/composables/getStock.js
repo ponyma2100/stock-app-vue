@@ -1,49 +1,47 @@
-import { ref } from "vue"
+import { ref } from "vue";
 
 const getStock = () => {
-
-  let stockInfo = ref([])
-  let otcInfo = ref([])
+  let stockInfo = ref([]);
+  let otcInfo = ref([]);
 
   const getStockInfo = async (symbol) => {
-
     try {
-      const response = await fetch(`https://quiet-brushlands-71126.herokuapp.com/api/stockinfo/${symbol}`)
+      const response = await fetch(
+        `https://ponystock.onrender.com/api/stockinfo/${symbol}`
+      );
       // const response = await fetch(`http://localhost:3000/api/stockinfo/${symbol}`)
-      const data = await response.json()
+      const data = await response.json();
 
-      stockInfo.value = await data
+      stockInfo.value = await data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
 
-    return stockInfo
-  }
-
+    return stockInfo;
+  };
 
   const getOtcInfo = async (symbol) => {
-
     try {
-      const response = await fetch(`https://quiet-brushlands-71126.herokuapp.com/api/otcinfo/${symbol}`)
+      const response = await fetch(
+        `https://ponystock.onrender.com/api/otcinfo/${symbol}`
+      );
       // const response = await fetch(`http://localhost:3000/api/otcinfo/${symbol}`)
-      const data = await response.json()
+      const data = await response.json();
 
-      otcInfo.value = await data
-
+      otcInfo.value = await data;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
 
-    return otcInfo
-  }
-
+    return otcInfo;
+  };
 
   return {
-    getStockInfo, getOtcInfo, stockInfo, otcInfo
-  }
+    getStockInfo,
+    getOtcInfo,
+    stockInfo,
+    otcInfo,
+  };
+};
 
-}
-
-
-
-export default getStock
+export default getStock;
